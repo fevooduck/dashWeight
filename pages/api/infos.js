@@ -1,17 +1,15 @@
 
-//import credentials from '../../credentials/google-sheets-api.json';
 import { GoogleSpreadsheet  } from 'google-spreadsheet';
 
 
 
 export default async function handler(req, res) {
   const doc = new GoogleSpreadsheet('1Y72SkakFPHVnyvKxS_CLnhRymPhrYxw4uJGwiVsDpug');
-
   await doc.useServiceAccountAuth({
     // client_email: credentials.client_email,
     // private_key: credentials.private_key,
-    client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-  private_key: process.env.GOOGLE_PRIVATE_KEY,
+    client_email: process.env.NEXT_PUBLIC_GOOGLE_SERVICE_ACCOUNT_EMAIL,
+  private_key: process.env.NEXT_PUBLIC_GOOGLE_PRIVATE_KEY,
   });
 
   await doc.loadInfo();
